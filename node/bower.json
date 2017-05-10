@@ -1,0 +1,35 @@
+{
+  "name": "tori-team",
+  "description": "tori-team",
+  "main": "index.js",
+  "authors": [
+    "hsalmeida"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-touch": "^1.6.4",
+    "angular-sanitize": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-messages": "^1.6.4",
+    "angular-i18n": "^1.6.4",
+    "angular-ui-router": "^0.4.2",
+    "font-awesome": ">=4.7.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.18.1",
+    "angular-filter": "^0.5.16",
+    "angular-moment": "^1.0.1",
+    "normalize-css": "^7.0.0",
+    "bootstrap": "^3.3.7"
+  }
+}
