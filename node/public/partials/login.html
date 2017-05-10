@@ -1,0 +1,21 @@
+<div class="container login-bg col-lg-4 col-lg-offset-4 vertical-center">
+    <div class="form-div">
+        <form class="form-signin" novalidate name="formulario">
+            <label for="inputEmail" class="sr-only">Usuário</label>
+            <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Usuário" required autofocus>
+
+            <div ng-messages="formulario.username.$error">
+                <div ng-message="required">Usuário obrigatório</div>
+            </div>
+
+            <label for="inputPassword" class="sr-only">Senha</label>
+            <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Senha" required>
+
+            <div ng-messages="formulario.password.$error">
+                <div ng-message="required">Password obrigatório</div>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">ENTRAR</button>
+        </form>
+    </div>
+</div>
