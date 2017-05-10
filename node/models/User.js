@@ -22,6 +22,6 @@ exports.createUser = function (user, cb) {
 exports.getUsers = function (cb) {
     var users = db.get('Usuarios');
     if(users) {
-        users.find().then(cb);
+        users.find({}, '-password').then(cb);
     }
 };

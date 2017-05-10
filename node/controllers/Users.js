@@ -4,7 +4,11 @@ var User = require("../models/User");
 
 router.post('/create', function (req, res) {
     User.createUser(req.body, function (response) {
-        res.json(response);
+        if(response._id) {
+            res.sendStatus(200);
+        } else {
+            res.sendStatus(500);
+        }
     });
 });
 
