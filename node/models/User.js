@@ -3,17 +3,20 @@ var bcrypt = require("bcrypt");
 
 exports.isPassword = function (login, password) {
     var users = db.get('Usuarios');
-    if(users) {
-        users.find({'login': login}).then(function (dbuser) {
-            console.log('dbuser', dbuser);
-            return bcrypt.compareSync(password, dbuser.password);
+    if (users) {
+        users.find({ 'login': login }).then(function (dbuser) {
+            if (dbuser) {
+                return bcrypt.compareSync(password, dbuser.password);
+            } else {
+                return false;
+            }
         })
     }
 };
 
 exports.createUser = function (user, cb) {
     var users = db.get('Usuarios');
-    if(users) {
+    if (users) {
         var salt = bcrypt.genSaltSync();
         user.password = bcrypt.hashSync(user.password, salt);
         users.insert(user).then(cb);
@@ -22,14 +25,14 @@ exports.createUser = function (user, cb) {
 
 exports.isUser = function (login, cb) {
     var users = db.get('Usuarios');
-    if(users) {
-        users.find({'login': login}, 'login').then(cb);
+    if (users) {
+        users.find({ 'login': login }, 'login').then(cb);
     }
 };
 
 exports.getUsers = function (cb) {
     var users = db.get('Usuarios');
-    if(users) {
+    if (users) {
         users.find({}, '-password').then(cb);
     }
 };

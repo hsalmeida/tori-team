@@ -20,20 +20,13 @@ router.get('/', function (req, res) {
 });
 
 router.post('/authenticate', function (req, res) {
-    User.isUser(req.body.login, function (user) {
-        console.log('user', user);
-        if (user) {
-            var exists = User.isPassword(req.body.login, req.body.password);
-            if (exists) {
-                var token = jwt.encode(user, 't0r1#t3@m#s3cr3t');
-                res.json({ success: true, token: 'JWT ' + token });
-            } else {
-                res.sendStatus(403);
-            }
-        } else {
-            res.sendStatus(403);
-        }
-    });
+    var exists = User.isPassword(req.body.login, req.body.password);
+    if (exists) {
+        var token = jwt.encode(user, 't0r1#t3@m#s3cr3t');
+        res.json({ success: true, token: 'JWT ' + token });
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 module.exports = router;
