@@ -21,9 +21,10 @@ router.get('/', function (req, res) {
 
 router.post('/authenticate', function (req, res) {
     User.isPassword(req.body.login, req.body.password, function (exists) {
+        console.log('exists', exists);
         if (exists) {
-            var token = jwt.encode(user, 't0r1#t3@m#s3cr3t');
-            res.json({ success: true, token: 'JWT ' + token });
+            //var token = jwt.encode(user, 't0r1#t3@m#s3cr3t');
+            res.json({ success: true });
         } else {
             res.sendStatus(403);
         }
