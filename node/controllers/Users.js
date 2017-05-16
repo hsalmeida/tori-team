@@ -20,7 +20,7 @@ router.get('/', function (req, res) {
 });
 
 router.post('/authenticate', function (req, res) {
-    User.isUser(req.body.login).then(function (user) {
+    User.isUser(req.body.login, function (user) {
         if (user) {
             User.isPassword(req.body.login, req.body.password).then(function (exists) {
                 if (exists) {
