@@ -1,10 +1,10 @@
 var db = require("../config/db");
 var bcrypt = require("bcrypt");
 
-exports.isPassword = function (user, password) {
+exports.isPassword = function (login, password) {
     var users = db.get('Usuarios');
     if(users) {
-        users.find({'user': user}).then(function (dbuser) {
+        users.find({'login': login}).then(function (dbuser) {
             return bcrypt.compareSync(password, dbuser.password);
         })
     }
@@ -16,6 +16,13 @@ exports.createUser = function (user, cb) {
         var salt = bcrypt.genSaltSync();
         user.password = bcrypt.hashSync(user.password, salt);
         users.insert(user).then(cb);
+    }
+};
+
+exports.isUser = function (login, cb) {
+    var users = db.get('Usuarios');
+    if(users) {
+        users.find({'login': login}, 'login').then(cb);
     }
 };
 

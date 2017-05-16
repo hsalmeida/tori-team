@@ -19,6 +19,7 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             $scope.logar = function () {
                 if ($scope.formulario.$valid) {
                     
+                    $scope.loginerr = "Usuário e/ou senha invalida";
                 }
             };
 
