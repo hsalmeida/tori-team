@@ -3,7 +3,7 @@ var bcrypt = require("bcrypt");
 
 exports.isPassword = function (login, password, cb) {
     var users = db.get('Usuarios');
-    users.find({ 'login': login }).then(function (dbuser) {
+    users.findOne({ 'login': login }).then(function (dbuser) {
         bcrypt.compare(password, dbuser.password).then(cb);
     });
 };
