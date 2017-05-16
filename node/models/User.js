@@ -5,6 +5,7 @@ exports.isPassword = function (login, password) {
     var users = db.get('Usuarios');
     if(users) {
         users.find({'login': login}).then(function (dbuser) {
+            console.log('dbuser', dbuser);
             return bcrypt.compareSync(password, dbuser.password);
         })
     }

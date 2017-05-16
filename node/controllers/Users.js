@@ -21,6 +21,7 @@ router.get('/', function (req, res) {
 
 router.post('/authenticate', function (req, res) {
     User.isUser(req.body.login, function (user) {
+        console.log('user', user);
         if (user) {
             var exists = User.isPassword(req.body.login, req.body.password);
             if (exists) {
