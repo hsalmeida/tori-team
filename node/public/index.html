@@ -33,15 +33,13 @@
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
-
-    <link rel="stylesheet" href="/vendor/normalize-css/normalize.css">
-    <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/angular-material/angular-material.css">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
 <body ng-app="tori-team">
 
-    <div ui-view class="main-view"></div>
+    <div ui-view layout="column" flex id="content" role="main" class="main-view"></div>
 
     <script type="text/javascript" src="/vendor/angular/angular.min.js"></script>
     <script type="text/javascript" src="/vendor/angular-animate/angular-animate.min.js"></script>
@@ -53,6 +51,7 @@
     <script type="text/javascript" src="/vendor/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="/vendor/moment/locale/pt-br.js"></script>
     <script type="text/javascript" src="/vendor/angular-moment/angular-moment.js"></script>
+    <script type="text/javascript" src="/vendor/angular-material/angular-material.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/directives/directives.js"></script>
     <script type="text/javascript" src="js/routes/router.js"></script>

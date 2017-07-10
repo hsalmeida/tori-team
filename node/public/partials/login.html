@@ -1,22 +1,21 @@
-<div class="container login-bg col-lg-4 col-lg-offset-4 vertical-center">
-    <div class="form-div">
-        <form class="form-signin" novalidate name="formulario" ng-submit="logar();">
-            <label for="inputEmail" class="sr-only">Usuário</label>
-            <input type="text" id="inputEmail" name="username" ng-model="username" class="form-control" placeholder="Usuário" required
-                autofocus>
-            <div ng-messages="formulario.username.$error" ng-if="formulario.username.$touched && formulario.username.$invalid">
-                <div class="alert-warning help-block" role="alert" ng-message="required">Informe o Usuário</div>
-            </div>
-            <label for="inputPassword" class="sr-only">Senha</label>
-            <input type="password" id="inputPassword" name="password" ng-model="password" class="form-control" placeholder="Senha" required>
-            <div ng-messages="formulario.password.$error" ng-if="formulario.password.$touched && formulario.password.$invalid">
-                <div class="alert-warning help-block" role="alert" ng-message="required">A senha é obrigatória</div>
-            </div>
-            <div class="alert alert-danger" ng-show="loginerr">
-                {{loginerr}}
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" ng-disabled="formulario.username.$dirty && formulario.username.$invalid || formulario.password.$dirty && formulario.password.$invalid"
-                type="submit">ENTRAR</button>
-        </form>
+<md-content layout="vertical" flex id="content">
+    <div layout="row" layout-align="center center" layout-fill>
+        <md-whiteframe class="md-whiteframe-z1" layout="column" layout-padding>
+            <md-content>
+                <md-input-container>
+                    <label>Email</label>
+                    <input ng-model="user.email">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="user.password" type="password">
+                </md-input-container>
+                <md-input-container layout-align="center center">
+                    <div layout="row" layout-sm="column" layout-margin>
+                        <md-button class="md-raised">Entrar</md-button>
+                    </div>
+                </md-input-container>
+            </md-content>
+        </md-whiteframe>
     </div>
-</div>
+</md-content>

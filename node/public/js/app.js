@@ -1,4 +1,4 @@
-angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angularMoment"])
+angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angularMoment", "ngMaterial"])
     .run(function (amMoment) {
         amMoment.changeLocale('pt-br');
     })
