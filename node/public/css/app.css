@@ -1,8 +1,19 @@
-.login-bg {
-    padding-top: 20px;
-    background: url(../img/TORI_LOGO_W.png) no-repeat center center fixed; 
-    height: 100vh;
+body.app-body {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+}
 
+.main-view {
+    height: 100%;
+}
+
+.login-bg {
+    background: url(../img/TORI_LOGO_W.png) no-repeat center center fixed; 
+}
+
+.whiteframe-white {
+    background-color: #FFF;
 }
 
 .form-signin {
@@ -26,4 +37,32 @@
     margin: 0 15px;
     left: 0;
     right: 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#dark-toolbar {
+    background-color: #333;
+}
+
+.section-main {
+    height: 100%;
+}
+
+.icon-size-36 {
+    font-size: 36px;
+}
+
+#avatar-item-name {
+    color: rgba(255,255,255,0.87);
+}
+
+#avatar-item-type {
+    color: rgba(255,255,255,0.87);
+}
+
+#avatar-item-modalities {
+    color: rgba(255,255,255,0.87);
 }

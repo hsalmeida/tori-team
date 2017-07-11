@@ -1,5 +1,5 @@
 angular.module("tori-team")
-.config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise("/");
 
         $stateProvider
@@ -12,8 +12,10 @@ angular.module("tori-team")
             .state('workspace', {
                 templateUrl: 'partials/workspace.html',
                 reloadOnSearch: false,
-                controller: function ($rootScope) {
-
+                controller: function ($rootScope, $scope, $mdSidenav) {
+                    $scope.toggleMenu = function () {
+                        $mdSidenav("left").toggle();
+                    }
                 }
             })
             .state('workspace.home', {

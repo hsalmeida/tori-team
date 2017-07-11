@@ -1,21 +1,36 @@
-<md-content layout="vertical" flex id="content">
-    <div layout="row" layout-align="center center" layout-fill>
-        <md-whiteframe class="md-whiteframe-z1" layout="column" layout-padding>
-            <md-content>
+<md-content layout="vertical" flex id="content" class="login-bg" ng-init="initLogin()">
+    <div layout="column" layout-align="center center" layout-fill>
+
+        <md-whiteframe class="md-whiteframe-z3 whiteframe-white" layout="column" layout-padding>
+
+            <md-content layout="column">
+                <!--
+                <md-toolbar id="dark-toolbar">
+                    <div class="md-toolbar-tools">
+                        <h2 flex class="text-center">ToriTeam</h2>
+                    </div>
+                </md-toolbar>
+                -->
+
                 <md-input-container>
-                    <label>Email</label>
-                    <input ng-model="user.email">
+                    <label>Usuario</label>
+                    <md-icon class="material-icons">person</md-icon>
+                    <input ng-model="user.login" name="name">
                 </md-input-container>
                 <md-input-container>
-                    <label>Password</label>
-                    <input ng-model="user.password" type="password">
+                    <label>Senha</label>
+                    <md-icon class="material-icons">lock</md-icon>
+                    <input ng-model="user.password" type="password" name="password">
                 </md-input-container>
                 <md-input-container layout-align="center center">
-                    <div layout="row" layout-sm="column" layout-margin>
-                        <md-button class="md-raised">Entrar</md-button>
+                    <div layout="column" layout-margin>
+                        <md-button class="md-raised md-primary" ng-click="logar();">Entrar</md-button>
                     </div>
                 </md-input-container>
+                <md-progress-linear ng-show="loginProgress" md-mode="indeterminate"></md-progress-linear>
             </md-content>
+
         </md-whiteframe>
+
     </div>
 </md-content>

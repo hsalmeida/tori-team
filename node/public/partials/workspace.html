@@ -1,0 +1,70 @@
+<div flex>
+    <md-toolbar class="md-tall" id="dark-toolbar" layout="row">
+        <md-button hide-gt-sm class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
+            <md-icon class="material-icons">menu</md-icon>
+        </md-button>
+        <div flex layout-align="center center" layout-padding layout="row">
+            <div flex>
+                <h2>TORI TEAM</h2>
+            </div>
+            <img ng-src="../img/TORI_LOGO_M.png" height="120" width="167">
+        </div>
+    </md-toolbar>
+    <section layout="row" flex class="section-main">
+        <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')">
+            <md-toolbar class="md-tall md-warn" layout="row" layout-padding>
+                <div class="md-toolbar-tools" layout-fill>
+                    <md-list>
+                        <md-list-item class="md-3-line">
+                            <md-icon class="material-icons icon-size-36">person</md-icon>
+                            <div class="md-list-item-text" layout="column">
+                                <h3 id="avatar-item-name">Hilton Almeida</h3>
+                                <h4 id="avatar-item-type">Aluno</h4>
+                                <p id="avatar-item-modalities">Tae Kwon-Do</p>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+                </div>
+            </md-toolbar>
+            <md-content>
+                <md-list flex>
+                    <md-list-item ng-click="null">
+                        <md-icon class="material-icons">new_releases</md-icon>
+                        <p>
+                            novidades
+                        </p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="material-icons">fitness_center</md-icon>
+                        <p>
+                            modalidades
+                        </p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="material-icons">cake</md-icon>
+                        <p>
+                            aniversarios
+                        </p>
+                    </md-list-item>
+                    <md-list-item ng-click="null">
+                        <md-icon class="material-icons">school</md-icon>
+                        <p>
+                            professores
+                        </p>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item ng-click="null">
+                        <md-icon class="material-icons">account_circle</md-icon>
+                        <p>
+                            usuarios
+                        </p>
+                    </md-list-item>
+
+                </md-list>
+            </md-content>
+        </md-sidenav>
+        <md-content>
+            <div ui-view></div>
+        </md-content>
+    </section>
+</div>
