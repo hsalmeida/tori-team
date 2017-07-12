@@ -28,42 +28,54 @@
             </md-toolbar>
             <md-content>
                 <md-list flex>
-                    <md-list-item ng-click="null">
+                    <md-list-item ng-click="go('workspace.home');">
+                        <md-icon class="material-icons">home</md-icon>
+                        <p>
+                            home
+                        </p>
+                    </md-list-item>
+                    <md-list-item ng-click="go('workspace.news');">
                         <md-icon class="material-icons">new_releases</md-icon>
                         <p>
                             novidades
                         </p>
                     </md-list-item>
-                    <md-list-item ng-click="null">
+                    <md-list-item ng-click="go('workspace.modalities');">
                         <md-icon class="material-icons">fitness_center</md-icon>
                         <p>
                             modalidades
                         </p>
                     </md-list-item>
-                    <md-list-item ng-click="null">
+                    <md-list-item ng-click="go('workspace.birthdays');">
                         <md-icon class="material-icons">cake</md-icon>
                         <p>
                             aniversarios
                         </p>
                     </md-list-item>
-                    <md-list-item ng-click="null">
+                    <md-list-item ng-click="go('workspace.professors');">
                         <md-icon class="material-icons">school</md-icon>
                         <p>
                             professores
                         </p>
                     </md-list-item>
                     <md-divider></md-divider>
-                    <md-list-item ng-click="null">
+                    <md-list-item ng-click="go('workspace.users');">
                         <md-icon class="material-icons">account_circle</md-icon>
                         <p>
                             usuarios
+                        </p>
+                    </md-list-item>
+                    <md-list-item ng-click="go('workspace.events');">
+                        <md-icon class="material-icons">event</md-icon>
+                        <p>
+                            eventos
                         </p>
                     </md-list-item>
 
                 </md-list>
             </md-content>
         </md-sidenav>
-        <md-content>
+        <md-content flex>
             <div ui-view></div>
         </md-content>
     </section>

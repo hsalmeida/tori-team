@@ -2,6 +2,7 @@
   "name": "Tori Team",
   "short_name": "Tori Team",
   "version" : "1",
+  "orientation": "any",
   "manifest_version" : 1,
   "icons": [
     {
@@ -43,5 +44,6 @@
   ],
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#FFFFFF"
+  "background_color": "#FFFFFF",
+  "theme_color": "#333333"
 }

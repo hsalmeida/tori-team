@@ -1,5 +1,4 @@
 body.app-body {
-    overflow: hidden;
     max-width: 100%;
     max-height: 100%;
 }
@@ -47,10 +46,6 @@ body.app-body {
     background-color: #333;
 }
 
-.section-main {
-    height: 100%;
-}
-
 .icon-size-36 {
     font-size: 36px;
 }
@@ -65,4 +60,9 @@ body.app-body {
 
 #avatar-item-modalities {
     color: rgba(255,255,255,0.87);
+}
+
+#search-users-names {
+    padding-bottom: 0;
+    margin-bottom: 0;
 }

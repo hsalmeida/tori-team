@@ -1,0 +1,30 @@
+<div ng-init="initUsers()">
+    <md-toolbar md-theme="docs-dark">
+        <div class="md-toolbar-tools">
+            <span>Usuarios</span>
+            <span flex></span>
+            <md-button class="md-raised" aria-label="New User">
+                <md-icon class="material-icons">person_add</md-icon>
+                Novo Usuario
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-content flex md-theme="docs-dark" layout="row" layout-padding>
+        <md-input-container flex id="search-users-names" class="search-users-names">
+            <label>Buscar usuario</label>
+            <input ng-model="search.name">
+        </md-input-container>
+    </md-content>
+    <md-content flex>
+        <md-list>
+            <md-list-item class="md-3-line" ng-repeat="user in vm.users | orderBy : 'name' | filter:search"
+            ng-click="handlerUser($event, 'edit', user);">
+                <div layout="column">
+                    <h4>{{user.name}} - {{user.type}}</h4>
+                    <p>{{user.modalities}}</p>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
