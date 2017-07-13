@@ -22,6 +22,9 @@ angular.module("tori-team")
         var User = {
             getByLogin: function (login) {
                 return $http.get("/User/login/" + login);
+            },
+            getAll: function () {
+                return $http.get("/User");
             }
         };
         return User;

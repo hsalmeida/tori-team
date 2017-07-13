@@ -37,19 +37,55 @@ exports.isUser = function (login, cb) {
 };
 
 exports.getUsers = function (cb) {
+    cb([
+        {
+            name: "Hilton Almeida",
+            roles: ["Aluno", "Admin"],
+            birthday: "11/08/1981",
+            modalities: ["Tae Kwon-Do"],
+            phone: "999 888 444",
+            email: "toriteam@toriteam.com.br"
+        },
+        {
+            name: "Thais Policarpo", 
+            roles: ["Professor", "Admin"], 
+            birthday: "15/10/1999", 
+            modalities: ["Judô", "Jiujitsu"],
+            phone: "999 888 444",
+            email: "toriteam@toriteam.com.br"
+        },
+        {
+            name: "Lucas Brasil", 
+            roles: ["Professor", "Aluno"], 
+            birthday: "15/10/1999", 
+            modalities: ["Tae Kwon-Do"],
+            phone: "999 888 444",
+            email: "toriteam@toriteam.com.br"
+        },
+        {
+            name: "Arthur Silva", 
+            roles: ["Aluno"], 
+            birthday: "15/10/2000", 
+            modalities: ["Tae Kwon-Do", "Jiujitsu"],
+            phone: "999 888 444",
+            email: "toriteam@toriteam.com.br"
+        }
+    ]);
+    /*
     var users = db.get('Usuarios');
     if (users) {
         users.find({}, '-password').then(cb);
     }
+    */
 };
 
 exports.getByLogin = function (login, cb) {
     switch (login) {
         case "hilton":
-            cb({name: "Hilton Almeida", roles: ["Aluno", "Admin"], birthday: "11/08/1981", modalities: ["Tae Kwon-Do"]});
+            cb({ name: "Hilton Almeida", roles: ["Aluno", "Admin"], birthday: "11/08/1981", modalities: ["Tae Kwon-Do"] });
             break;
         case "thais":
-            cb({name: "Thais Policarpo", roles: ["Professor", "Admin"], birthday: "15/10/1999", modalities: ["Judô", "Jiujitsu"]});
+            cb({ name: "Thais Policarpo", roles: ["Professor", "Admin"], birthday: "15/10/1999", modalities: ["Judô", "Jiujitsu"] });
             break;
         default:
             cb({});

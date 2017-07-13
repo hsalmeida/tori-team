@@ -20,8 +20,8 @@
             <md-list-item class="md-3-line" ng-repeat="user in vm.users | orderBy : 'name' | filter:search"
             ng-click="handlerUser($event, 'edit', user);">
                 <div layout="column">
-                    <h4>{{user.name}} - {{user.type}}</h4>
-                    <p>{{user.modalities}}</p>
+                    <h4>{{user.name}} - <span ng-repeat="role in user.roles">{{role}}&nbsp;</span></h4>
+                    <p><span ng-repeat="modality in user.modalities">{{modality}}&nbsp;</span></p>
                 </div>
                 <md-divider></md-divider>
             </md-list-item>

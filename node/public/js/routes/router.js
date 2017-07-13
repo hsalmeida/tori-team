@@ -18,15 +18,20 @@ angular.module("tori-team")
                 data: {
                     requireLogin: true
                 },
-                controller: function ($rootScope, $scope, $mdSidenav, $state, $mdMedia) {
+                controller: function ($rootScope, $scope, $mdSidenav, $state, $mdMedia, $window) {
                     $scope.toggleMenu = function () {
                         $mdSidenav("left").toggle();
                     }
                     $scope.go = function (page) {
-                        if(!$mdMedia('gt-sm')){
+                        if (!$mdMedia('gt-sm')) {
                             $mdSidenav("left").toggle();
                         }
                         $state.go(page);
+                    }
+                    $scope.logout = function () {
+                        $window.sessionStorage.removeItem('toriTeamUsuarioLogado');
+                        $rootScope.usuarioLogado = null;
+                        $state.go('login');
                     }
                 }
             })
@@ -34,6 +39,9 @@ angular.module("tori-team")
                 url: '/home',
                 templateUrl: 'partials/home.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'HomeController',
                 controllerAs: 'vm'
             })
@@ -41,6 +49,9 @@ angular.module("tori-team")
                 url: '/news',
                 templateUrl: 'partials/news.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'NewsController',
                 controllerAs: 'vm'
             })
@@ -48,6 +59,9 @@ angular.module("tori-team")
                 url: '/modalities',
                 templateUrl: 'partials/modalities.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'ModalitiesController',
                 controllerAs: 'vm'
             })
@@ -55,6 +69,9 @@ angular.module("tori-team")
                 url: '/birthdays',
                 templateUrl: 'partials/birthdays.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'BirthdaysController',
                 controllerAs: 'vm'
             })
@@ -62,6 +79,9 @@ angular.module("tori-team")
                 url: '/professors',
                 templateUrl: 'partials/professors.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'ProfessorsController',
                 controllerAs: 'vm'
             })
@@ -69,6 +89,9 @@ angular.module("tori-team")
                 url: '/users',
                 templateUrl: 'partials/users.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'UsersController',
                 controllerAs: 'vm'
             })
@@ -76,6 +99,9 @@ angular.module("tori-team")
                 url: '/events',
                 templateUrl: 'partials/events.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: 'EventsController',
                 controllerAs: 'vm'
             });

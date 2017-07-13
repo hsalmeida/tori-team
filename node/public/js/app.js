@@ -9,9 +9,9 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
     })
     .run(function ($rootScope, $state, $window) {
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
-            var requireLogin = toState.data.requiredlogin;
+            var requireLogin = toState.data.requireLogin;
             var currentUser = angular.fromJson($window.sessionStorage.getItem('toriTeamUsuarioLogado'));
-            if (requireLogin && typeof currentUser === 'undefined') {
+            if (requireLogin && (currentUser === null || typeof currentUser === 'undefined')) {
                 event.preventDefault();
                 $state.go('login');
             } else {
@@ -123,16 +123,17 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             var vm = this;
 
         }])
-    .controller('UsersController', ['$scope', '$rootScope', '$state', '$mdDialog',
-        function ($scope, $rootScope, $state, $mdDialog) {
+    .controller('UsersController', ['$scope', '$rootScope', '$state', '$mdDialog', 'User',
+        function ($scope, $rootScope, $state, $mdDialog, User) {
 
             var vm = this;
             vm.users = [];
 
             $scope.initUsers = function () {
-                vm.users.push({ name: "Hilton Almeida", type: "Aluno", modalities: "Tae Kwon-Do", phone: "999888777", email: "emailsuper@superemail.com.br" });
-                vm.users.push({ name: "Lucas Brasil", type: "Aluno", modalities: "Tae Kwon-Do", phone: "999888777", email: "emailsuper@superemail.com.br" });
-                vm.users.push({ name: "Arthur", type: "Aluno", modalities: "Tae Kwon-Do", phone: "999888777", email: "emailsuper@superemail.com.br" });
+
+                User.getAll().then(function (data) {
+                    vm.users = data.data;
+                });
             };
 
             $scope.handlerUser = function (evt, action, user) {
