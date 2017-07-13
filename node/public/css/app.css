@@ -66,3 +66,7 @@ body.app-body {
     padding-bottom: 0;
     margin-bottom: 0;
 }
+
+.error-login-message {
+    color: rgb(221,44,0);
+}

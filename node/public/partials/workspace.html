@@ -18,9 +18,13 @@
                         <md-list-item class="md-3-line">
                             <md-icon class="material-icons icon-size-36">person</md-icon>
                             <div class="md-list-item-text" layout="column">
-                                <h3 id="avatar-item-name">Hilton Almeida</h3>
-                                <h4 id="avatar-item-type">Aluno</h4>
-                                <p id="avatar-item-modalities">Tae Kwon-Do</p>
+                                <h3 id="avatar-item-name">{{usuarioLogado.name}}</h3>
+                                <h4 id="avatar-item-type">
+                                    <span ng-repeat="role in usuarioLogado.roles">{{role}}&nbsp;</span>
+                                </h4>
+                                <p id="avatar-item-modalities">
+                                    <span ng-repeat="modality in usuarioLogado.modalities">{{modality}}&nbsp;</span>
+                                </p>
                             </div>
                         </md-list-item>
                     </md-list>
@@ -31,47 +35,53 @@
                     <md-list-item ng-click="go('workspace.home');">
                         <md-icon class="material-icons">home</md-icon>
                         <p>
-                            home
+                            HOME
                         </p>
                     </md-list-item>
                     <md-list-item ng-click="go('workspace.news');">
                         <md-icon class="material-icons">new_releases</md-icon>
                         <p>
-                            novidades
+                            NOVIDADES
                         </p>
                     </md-list-item>
                     <md-list-item ng-click="go('workspace.modalities');">
                         <md-icon class="material-icons">fitness_center</md-icon>
                         <p>
-                            modalidades
+                            MODALIDADES
                         </p>
                     </md-list-item>
                     <md-list-item ng-click="go('workspace.birthdays');">
                         <md-icon class="material-icons">cake</md-icon>
                         <p>
-                            aniversarios
+                            ANIVERSARIOS
                         </p>
                     </md-list-item>
                     <md-list-item ng-click="go('workspace.professors');">
                         <md-icon class="material-icons">school</md-icon>
                         <p>
-                            professores
+                            PROFESSORES
                         </p>
                     </md-list-item>
                     <md-divider></md-divider>
                     <md-list-item ng-click="go('workspace.users');">
                         <md-icon class="material-icons">account_circle</md-icon>
                         <p>
-                            usuarios
+                            USUARIOS
                         </p>
                     </md-list-item>
                     <md-list-item ng-click="go('workspace.events');">
                         <md-icon class="material-icons">event</md-icon>
                         <p>
-                            eventos
+                            EVENTOS
                         </p>
                     </md-list-item>
-
+                    <md-divider></md-divider>
+                    <md-list-item ng-click="logout()">
+                        <md-icon class="material-icons">exit_to_app</md-icon>
+                        <p>
+                            SAIR
+                        </p>
+                    </md-list-item>
                 </md-list>
             </md-content>
         </md-sidenav>

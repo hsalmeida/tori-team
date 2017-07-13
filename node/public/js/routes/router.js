@@ -7,11 +7,17 @@ angular.module("tori-team")
                 url: '/',
                 templateUrl: 'partials/login.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: false
+                },
                 controller: 'LoginController'
             })
             .state('workspace', {
                 templateUrl: 'partials/workspace.html',
                 reloadOnSearch: false,
+                data: {
+                    requireLogin: true
+                },
                 controller: function ($rootScope, $scope, $mdSidenav, $state, $mdMedia) {
                     $scope.toggleMenu = function () {
                         $mdSidenav("left").toggle();

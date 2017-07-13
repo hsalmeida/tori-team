@@ -1,4 +1,4 @@
-angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angularMoment", "ngMaterial"])
+angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angularMoment", "ngMaterial", "ngResource"])
     .run(function (amMoment) {
         amMoment.changeLocale('pt-br');
     })
@@ -7,12 +7,34 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             .primaryPalette('red')
             .dark();
     })
-    .controller('LoginController', ['$scope', '$rootScope', '$state',
-        function ($scope, $rootScope, $state) {
+    .run(function ($rootScope, $state, $window) {
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+            var requireLogin = toState.data.requiredlogin;
+            var currentUser = angular.fromJson($window.sessionStorage.getItem('toriTeamUsuarioLogado'));
+            if (requireLogin && typeof currentUser === 'undefined') {
+                event.preventDefault();
+                $state.go('login');
+            } else {
+                $rootScope.usuarioLogado = currentUser;
+            }
+        });
+        $rootScope.$on("logout", function () {
+            logout();
+        });
+
+        function logout() {
+            $window.sessionStorage.removeItem('toriTeamUsuarioLogado');
+            $rootScope.usuarioLogado = null;
+            $state.go('login');
+        }
+    })
+    .controller('LoginController', ['$scope', '$rootScope', '$state', '$window','Login', 'User',
+        function ($scope, $rootScope, $state, $window, Login, User) {
             $scope.user = {
-                username: "",
+                login: "",
                 password: ""
             };
+            $scope.loginerr = false;
             $scope.btnName = "Entrar";
             $scope.btnDisabled = false;
             $scope.loginerr = "";
@@ -24,11 +46,27 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
 
             $scope.logar = function () {
                 $scope.loginProgress = true;
-
-                //$scope.loginerr = "Usuário e/ou senha invalida";
-
-                $state.go("workspace.home");
-                $scope.loginProgress = false;
+                $scope.btnDisabled = true;
+                $scope.loginerr = false;
+                Login.authenticate($scope.user.login, $scope.user.password)
+                    .then(function (data) {
+                        if (data.data.success) {
+                            User.getByLogin($scope.user.login)
+                                .then(function (data) {
+                                    var user = data.data;
+                                    $window.sessionStorage.setItem('toriTeamUsuarioLogado', angular.toJson(user));
+                                    $rootScope.usuarioLogado = user;
+                                    $state.go("workspace.home");
+                                    $scope.btnDisabled = false;
+                                    $scope.loginProgress = false;
+                                }, function (err) { });
+                        }
+                    }, function (err) {
+                        console.log("err", err);
+                        $scope.btnDisabled = false;
+                        $scope.loginProgress = false;
+                        $scope.loginerr = true;
+                    });
             };
 
             $scope.initLogin = function () {
@@ -36,10 +74,34 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             };
 
         }])
-    .controller('HomeController', ['$scope', '$rootScope', '$state',
-        function ($scope, $rootScope, $state) {
+    .controller('HomeController', ['$scope', '$rootScope', '$state', 'Home',
+        function ($scope, $rootScope, $state, Home) {
             var vm = this;
-
+            $scope.initHome = function () {
+                $scope.loadingHome = true;
+                Home.get("user").then(function (data) {
+                    angular.forEach(data.data.events, function (event) {
+                        switch (event.modality) {
+                            case "taekwondo":
+                                event.photo = "img/tkd-itf-champion-black.jpg";
+                                break;
+                            case "capoeira":
+                                event.photo = "img/capoeira-champion.jpg";
+                                break;
+                            default:
+                                break;
+                        }
+                    });
+                    vm.events = data.data.events;
+                    vm.birthdays = data.data.birthdays;
+                    $scope.loadingHome = false;
+                }, function (err) {
+                    console.log(err);
+                });
+            };
+            $scope.goBirthdays = function () {
+                $state.go("workspace.birthdays");
+            }
         }])
     .controller('NewsController', ['$scope', '$rootScope', '$state',
         function ($scope, $rootScope, $state) {
@@ -110,8 +172,8 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             var vm = this;
 
         }]);
-if('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('js/service-worker.js')
-        .then(function() { });
+        .then(function () { });
 }

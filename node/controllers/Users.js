@@ -20,12 +20,17 @@ router.get('/', function (req, res) {
 
 router.post('/authenticate', function (req, res) {
     User.isPassword(req.body.login, req.body.password, function (exists) {
-        console.log('exists', exists);
         if (exists) {
             res.json({ success: true });
         } else {
             res.sendStatus(403);
         }
+    });
+});
+
+router.get('/login/:login', function (req, res) {
+    User.getByLogin(req.params.login, function (user) {
+        res.json(user);
     });
 });
 
