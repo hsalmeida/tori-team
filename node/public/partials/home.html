@@ -8,6 +8,25 @@
         <div ng-show="loadingHome" layout="row" layout-sm="column" layout-align="space-around">
             <md-progress-circular md-mode="indeterminate"></md-progress-circular>
         </div>
+
+        <md-card ng-show="vm.eventsToApprove">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{vm.eventsToApprove.amount}} evento(s) para aprovar</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p ng-repeat="event in vm.eventsToApprove.events">
+                    {{event.name}} - {{event.date}}
+                </p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button class="md-icon-button" aria-label="View" ng-click="goNews()">
+                    <md-icon class="material-icons">arrow_forward</md-icon>
+                </md-button>
+            </md-card-actions>
+        </md-card>
+
         <md-card ng-repeat="event in vm.events">
             <img hide-gt-sm ng-src="{{event.photo}}" ng-if="event.photo" class="md-card-image" alt="{{event.name}}">
             <md-card-title>
@@ -35,16 +54,11 @@
                     <span class="md-headline">Aniversariantes de {{vm.birthdays.month}}</span>
                 </md-card-title-text>
             </md-card-title>
-            <md-card-content hide-gt-sm>
+            <md-card-content>
                 <p ng-repeat="person in vm.birthdays.persons">
                     {{person.name}} - {{person.date}}
                 </p>
             </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button ng-click="goBirthdays();" class="md-icon-button" aria-label="Share">
-                    <md-icon class="material-icons">arrow_forward</md-icon>
-                </md-button>
-            </md-card-actions>
         </md-card>
 
     </md-content>

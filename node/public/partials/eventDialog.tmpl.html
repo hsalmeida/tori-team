@@ -1,0 +1,50 @@
+<md-dialog aria-label="Novo Evento" ng-init="initEventDialog()" md-theme="default" flex>
+    <form name="formulario" ng-cloak>
+        <md-toolbar md-theme="docs-dark">
+            <div class="md-toolbar-tools">
+                <h2>Evento</h2>
+                <span flex></span>
+                <md-button ng-hide="action !== 'edit'" class="md-raised md-accent" aria-label="Excluir Evento" ng-click="deleteEvent($event);">
+                    Excluir
+                </md-button>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon aria-label="Fechar dialog" class="material-icons">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-icon-float md-block">
+                    <label>Titulo</label>
+                    <input ng-model="event.name" type="text" md-maxlength="50">
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Descrição</label>
+                    <textarea ng-model="event.description" md-maxlength="450" rows="2"></textarea>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Tipo do Evento</label>
+                    <md-select name="type" ng-model="event.type">
+                        <md-option value="alert">Aviso</md-option>
+                        <md-option value="championship">Campeonato</md-option>
+                        <md-option value="special">Evento Especial</md-option>
+                        <md-option value="birthday">Festa de Aniversário</md-option>
+                        <md-option value="seminar">Seminário</md-option>
+                        <md-option value="extra">Treino Extra</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-primary" ng-click="cancel();">
+                Cancelar
+            </md-button>
+            <md-button class="md-primary" ng-click="save();" ng-disabled="formulario.$invalid">
+                Salvar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

@@ -82,10 +82,10 @@ exports.getUsers = function (cb) {
 exports.getByLogin = function (login, cb) {
     switch (login) {
         case "hilton":
-            cb({ name: "Hilton Almeida", roles: ["Aluno", "Admin"], birthday: "11/08/1981", modalities: ["Tae Kwon-Do"] });
+            cb({user: "hilton", name: "Hilton Almeida", roles: ["Aluno", "Admin"], birthday: "11/08/1981", modalities: ["Tae Kwon-Do"] });
             break;
         case "thais":
-            cb({ name: "Thais Policarpo", roles: ["Professor", "Admin"], birthday: "15/10/1999", modalities: ["Judô", "Jiujitsu"] });
+            cb({user: "thais",  name: "Thais Policarpo", roles: ["Professor", "Admin"], birthday: "15/10/1999", modalities: ["Judô", "Jiujitsu"] });
             break;
         default:
             cb({});

@@ -1,10 +1,52 @@
-<div>
+<div ng-init="initNovidades()">
     <md-toolbar md-theme="docs-dark">
         <div class="md-toolbar-tools">
             <span>Novidades</span>
+            <span flex></span>
+            <md-button class="md-raised" aria-label="Add News" ng-click="handlerNews($event, 'add');">
+                <md-icon class="material-icons">event_available</md-icon>
+                Criar Novidade
+            </md-button>
         </div>
     </md-toolbar>
     <md-content flex>
-        
+        <div ng-show="loadingNews" layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <md-card ng-repeat="event in vm.news">
+            <img hide-gt-sm ng-src="{{event.photo}}" ng-if="event.photo" class="md-card-image" alt="{{event.name}}">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">{{event.name}}</span>
+                    <span class="md-subhead">{{event.description}}</span>
+                </md-card-title-text>
+                <md-card-title-media show-gt-sm hide-sm hide-xs>
+                    <img ng-src="{{event.photo}}" ng-if="event.photo" class="md-card-image" alt="{{event.name}}">
+                </md-card-title-media>
+            </md-card-title>
+            <md-card-content>
+                <div ng-if="!event.multipleDates">
+                    <p>Dia {{event.eventDates[0].begin | date: "dd/MM"}} de {{event.eventDates[0].begin | date: "HH:mm"}} até
+                        {{event.eventDates[0].end | date: "HH:mm"}}</p>
+                </div>
+                <div ng-if="event.multipleDates">
+                    <p>Dias:</p>
+                    <p ng-repeat="date in event.eventDates">{{date.day}} - {{date.begin | date: "dd/MM"}} de {{date.begin | date: "HH:mm"}} até {{date.end | date:
+                        "HH:mm"}}</p>
+                </div>
+                <p class="text-right">Organizador: {{event.author.user}}</p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button ng-if="!event.approver" class="md-raised md-primary" aria-label="Approve" ng-click="approveEvent();">
+                    Aprovar
+                </md-button>
+                <md-button ng-if="!event.approver" class="md-raised md-warn" aria-label="Desapprove" ng-click="desapproveEvent();">
+                    Desaprovar
+                </md-button>
+                <md-button ng-if="permissaoEditar(event);" class="md-raised" aria-label="Edit" ng-click="handlerNews($event, 'edit', event);">
+                    Editar
+                </md-button>
+            </md-card-actions>
+        </md-card>
     </md-content>
 </div>

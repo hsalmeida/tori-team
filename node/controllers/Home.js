@@ -3,6 +3,16 @@ var router = express.Router();
 
 router.get('/:user', function (req, res) {
     var home = {
+        eventsToApprove: {
+            amount: 1,
+            events: [
+                {
+                    event: "hash",
+                    name: "Campeonato Capoeira",
+                    date: "25/10"
+                }
+            ]
+        },
         birthdays: {
             month: "Agosto",
             persons: [

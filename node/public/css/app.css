@@ -42,6 +42,10 @@ body.app-body {
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 #dark-toolbar {
     background-color: #333;
 }

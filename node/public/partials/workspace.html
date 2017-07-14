@@ -50,29 +50,17 @@
                             MODALIDADES
                         </p>
                     </md-list-item>
-                    <md-list-item ng-click="go('workspace.birthdays');">
-                        <md-icon class="material-icons">cake</md-icon>
-                        <p>
-                            ANIVERSARIOS
-                        </p>
-                    </md-list-item>
                     <md-list-item ng-click="go('workspace.professors');">
                         <md-icon class="material-icons">school</md-icon>
                         <p>
                             PROFESSORES
                         </p>
                     </md-list-item>
-                    <md-divider></md-divider>
-                    <md-list-item ng-click="go('workspace.users');">
+                    <md-divider ng-if="usuarioLogado.admin"></md-divider>
+                    <md-list-item ng-if="usuarioLogado.admin" ng-click="go('workspace.users');">
                         <md-icon class="material-icons">account_circle</md-icon>
                         <p>
                             USUARIOS
-                        </p>
-                    </md-list-item>
-                    <md-list-item ng-click="go('workspace.events');">
-                        <md-icon class="material-icons">event</md-icon>
-                        <p>
-                            EVENTOS
                         </p>
                     </md-list-item>
                     <md-divider></md-divider>
@@ -86,7 +74,7 @@
             </md-content>
         </md-sidenav>
         <md-content flex>
-            <div ui-view></div>
+            <div ui-view layout-fill></div>
         </md-content>
     </section>
 </div>

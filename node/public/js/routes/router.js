@@ -94,15 +94,5 @@ angular.module("tori-team")
                 },
                 controller: 'UsersController',
                 controllerAs: 'vm'
-            })
-            .state('workspace.events', {
-                url: '/events',
-                templateUrl: 'partials/events.html',
-                reloadOnSearch: false,
-                data: {
-                    requireLogin: true
-                },
-                controller: 'EventsController',
-                controllerAs: 'vm'
             });
     });
