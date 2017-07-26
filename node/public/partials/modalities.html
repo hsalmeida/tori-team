@@ -1,34 +1,37 @@
-<div>
+<div ng-init="initModality()">
     <md-toolbar md-theme="docs-dark">
         <div class="md-toolbar-tools">
             <span>Modalidades</span>
             <span flex></span>
-            <md-button class="md-raised" aria-label="New User">
-                <md-icon class="material-icons">person_add</md-icon>
+            <md-button ng-if="permissaoCriar();" ng-click="handlerModality($event, 'new')" class="md-raised" aria-label="New Modality">
+                <md-icon class="material-icons">fitness_center</md-icon>
                 Nova Modalidade
             </md-button>
         </div>
     </md-toolbar>
     <md-content flex>
-        <md-card>
+        <md-card ng-repeat="modality in vm.modalities">
             <md-card-title>
                 <md-card-title-text>
-                    <span class="md-headline">Tae Kwon-Do</span>
-                    <span class="md-subhead">Leandro Davi</span>
+                    <span class="md-headline">{{modality.name}}</span>
+                    <span class="md-subhead"><span ng-repeat="professor in modality.professors">{{professor.name}}<span ng-show="!$last">, </span></span>
+                    </span>
                 </md-card-title-text>
+                <!--
                 <md-card-title-media>
                     <div class="md-media-sm card-media">
                         <img ng-src="img/itf-logo.jpg" class="md-card-image" alt="itf">
                     </div>
                 </md-card-title-media>
+                -->
             </md-card-title>
             <md-card-content>
                 <p>
-                    Segunda, Quartas e Sextas 9h / Terças e Quintas 19h30
+                    Turmas: <span ng-repeat="schedule in modality.schedule"><span ng-repeat="day in schedule.days">{{day}}<span ng-show="!$last">, </span></span> de {{schedule.start}} as {{schedule.end}}<span ng-show="!$last"> / </span></span>
                 </p>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button>Editar</md-button>
+                <md-button ng-if="permissaoEditar(modality);" ng-click="handlerModality($event, 'edit', modality)">Editar</md-button>
             </md-card-actions>
         </md-card>
     </md-content>

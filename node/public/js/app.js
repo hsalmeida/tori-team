@@ -28,10 +28,6 @@ angular.module("tori-team", ["ngMessages", "ui.router", "angular.filter", "angul
             $state.go('login');
         }
     })
-    .controller('ModalitiesController', ['$scope', '$rootScope', '$state',
-        function ($scope, $rootScope, $state) {
-            var vm = this;
-        }])
     .controller('BirthdaysController', ['$scope', '$rootScope', '$state',
         function ($scope, $rootScope, $state) {
             var vm = this;

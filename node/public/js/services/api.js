@@ -46,4 +46,14 @@ angular.module("tori-team")
             }
         };
         return News;
+    })
+    .factory('Modality', function ($http) {
+        var Modality = {
+            getAll: function (user) {
+                return $http.get("/Modality/" + user).then(function (response) {
+                    return response.data;
+                });
+            }
+        };
+        return Modality;
     });
