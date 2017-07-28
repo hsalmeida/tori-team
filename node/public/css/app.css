@@ -74,3 +74,8 @@ body.app-body {
 .error-login-message {
     color: rgb(221,44,0);
 }
+
+fieldset.standard {
+    border-style: solid;
+    border-width: 1px; 
+}

@@ -44,7 +44,10 @@ exports.getUsers = function (cb) {
             birthday: "11/08/1981",
             modalities: ["Tae Kwon-Do"],
             phone: "999 888 444",
-            email: "toriteam@toriteam.com.br"
+            email: "toriteam@toriteam.com.br",
+            parent: "",
+            parentPhone: "",
+            parentMail: ""
         },
         {
             name: "Thais Policarpo", 
@@ -52,7 +55,10 @@ exports.getUsers = function (cb) {
             birthday: "15/10/1999", 
             modalities: ["Judô", "Jiujitsu"],
             phone: "999 888 444",
-            email: "toriteam@toriteam.com.br"
+            email: "toriteam@toriteam.com.br",
+            parent: "",
+            parentPhone: "",
+            parentMail: ""
         },
         {
             name: "Lucas Brasil", 
@@ -60,7 +66,10 @@ exports.getUsers = function (cb) {
             birthday: "15/10/1999", 
             modalities: ["Tae Kwon-Do"],
             phone: "999 888 444",
-            email: "toriteam@toriteam.com.br"
+            email: "toriteam@toriteam.com.br",
+            parent: "",
+            parentPhone: "",
+            parentMail: ""
         },
         {
             name: "Arthur Silva", 
@@ -68,7 +77,10 @@ exports.getUsers = function (cb) {
             birthday: "15/10/2000", 
             modalities: ["Tae Kwon-Do", "Jiujitsu"],
             phone: "999 888 444",
-            email: "toriteam@toriteam.com.br"
+            email: "toriteam@toriteam.com.br",
+            parent: "Luiza Albuquerque dos Santos",
+            parentPhone: "875 444 568",
+            parentMail: "luiz.albuquerque@supermail.com"
         }
     ]);
     /*

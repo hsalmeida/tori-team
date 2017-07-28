@@ -23,7 +23,45 @@
                     <label>Descrição</label>
                     <textarea ng-model="modality.description" md-maxlength="450" rows="2"></textarea>
                 </md-input-container>
-                
+                <div flex layout-align="center center" layout="row">
+                    <md-button class="md-raised md-primary">Adicionar classe</md-button>
+                </div>
+                <div flex>
+                    <md-list>
+                        <md-list-item ng-repeat="class in modality.schedule">
+                            <fieldset class="standard">
+                                <legend>Classe&nbsp;{{$index + 1}}&nbsp;
+                                    <md-button class="md-raised md-warn">Remover</md-button>
+                                </legend>
+                                <div flex layout="row">
+                                    <md-input-container flex="50">
+                                        <label>Início da aula</label>
+                                        <md-select ng-model="class.start">
+                                            <md-option ng-value="hour" ng-repeat="hour in hours">
+                                                {{ hour }}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                    <md-input-container flex="50">
+                                        <label>Término da aula</label>
+                                        <md-select ng-model="class.end">
+                                            <md-option ng-value="hour" ng-repeat="hour in hours">
+                                                {{ hour }}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </div>
+                                <div flex>
+                                    <md-checkbox name="segunda" aria-label="Segunda" ng-checked="classDay(class, 'Segunda')">Segunda</md-checkbox>
+                                    <md-checkbox name="terca" aria-label="Terça" ng-checked="classDay(class, 'Terça')">Terça</md-checkbox>
+                                    <md-checkbox name="quarta" aria-label="Quarta" ng-checked="classDay(class, 'Quarta')">Quarta</md-checkbox>
+                                    <md-checkbox name="quinta" aria-label="Quinta" ng-checked="classDay(class, 'Quinta')">Quinta</md-checkbox>
+                                    <md-checkbox name="sexta" aria-label="Sexta" ng-checked="classDay(class, 'Sexta')">Sexta</md-checkbox>
+                                </div>
+                            </fieldset>
+                        </md-list-item>
+                    </md-list>
+                </div>
             </div>
         </md-dialog-content>
 

@@ -30,11 +30,19 @@ angular.module("tori-team")
                 }
             };
         }])
-    .controller('UserDialogController', function ($scope, action, user, parentScope, $mdDialog) {
+    .controller('UserDialogController', function ($scope, action, user, parentScope, $mdDialog, $filter) {
         $scope.action = action;
+        $scope.selectedItem = "";
+        $scope.searchText = "";
         $scope.initUserDialog = function () {
+            $scope.modalities = ["Tae Kwon-Do", "Capoeira", "Judô", "Jiujitsu", "Muay Thay", "Boxe", "Sumô", "Kravmaga"];
             $scope.user = angular.copy(user);
         }
+
+        $scope.querySearch = function (query) {
+            var results = query ? $filter('filter')($scope.modalities, query) : [];
+            return results;
+        };
 
         $scope.hide = function () {
             $mdDialog.cancel();
