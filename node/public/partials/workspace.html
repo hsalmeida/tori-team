@@ -16,7 +16,8 @@
                 <div class="md-toolbar-tools" layout-fill>
                     <md-list>
                         <md-list-item class="md-3-line">
-                            <md-icon class="material-icons icon-size-36">person</md-icon>
+                            <img ng-if="usuarioLogado.photo" ng-src="{{usuarioLogado.photo}}" class="md-avatar" alt="{{usuarioLogado.name}}" />
+                            <md-icon ng-if="!usuarioLogado.photo" class="material-icons icon-size-36">person</md-icon>
                             <div class="md-list-item-text" layout="column">
                                 <h3 id="avatar-item-name">{{usuarioLogado.name}}</h3>
                                 <h4 id="avatar-item-type">
